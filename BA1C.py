@@ -2,11 +2,11 @@
 
 def reverse_strand(pattern):
     bases = {"A":"T","G":"C","C":"G","T":"A"}
-    return reversed([bases[b] for b in pattern])
+    return "".join(bases[i] for i in reversed(pattern))
 
 # input 
 pattern = "AAAACCCGGT"
 
 # output
 result = reverse_strand(pattern)
-print("".join(result))
+print(result)
