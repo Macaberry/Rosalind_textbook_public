@@ -2,18 +2,15 @@
 
 def PatternToNum(pattern):
     base_table = {"A":0,"C":1,"G":2,"T":3}
-    decimal = sum(base_table[i] for i in pattern)
-    def decimal2quart(num):
-        if num == 0: return '0'
-        lst = []
-        while num > 0:
-            lst.append(str(num % 4))
-            num //= 4
-        return "".join(reversed(lst))
-    return decimal2quart(decimal)
+    n = len(pattern)
+    i, num = 0, 0
+    while i < n:
+        num += base_table[pattern[i]]*(4**(n-i-1)) 
+        i += 1
+    return str(num) 
 
 # Input
-pattern = "AGT"
+pattern = "CTAAGTATATGGCACCGCATACTGAG"
 
 # Output
 print(PatternToNum(pattern))
