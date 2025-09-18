@@ -7,7 +7,8 @@ def main():
     sString = inputs[1]
 
     result = Composition(k, sString)
-    write_output(result)
+    # Output
+    write_Output(result)
     return 0
 
 def Composition(k, text):
@@ -18,7 +19,7 @@ def get_Input(filename):
         inputs = f.read().split()
     return inputs
 
-def write_output(result):
+def write_Output(result):
     with open("rosalind_ba3a_result.txt","w") as f:
         f.write("\n".join(result))
 
