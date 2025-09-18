@@ -6,7 +6,7 @@ def main():
     sKmers = inputs
 
     result = Reconstruct_Str_from_kmers(sKmers)
-    
+
     # Output
     write_Output(result)
     return 0
@@ -25,7 +25,6 @@ def get_Input(filename):
 def write_Output(result):
     with open("rosalind_ba3b_result.txt","w") as f:
         f.write(result)
-
 
 if __name__ == "__main__":
     main()
