@@ -1,6 +1,7 @@
 # Construct the De Bruijn Graph of a String
 
 def main():
+    
     InputFilename = "./rosalind_ba3d.txt"
     nKmer_Length, sGenome = get_Input(InputFilename)
     
@@ -11,13 +12,14 @@ def main():
 
     return 0
 
-def Construct_sDeBruijnDic(nKmer_Length, sGenome):
+def Construct_sDeBruijnDic(nKmer_Length, sFullGenome):
+    
     sGraphDic = {}
-    nLength = len(sGenome)
+    nLength = len(sFullGenome)
 
     for i in range(nLength-nKmer_Length):
-        sPre_kmer = sGenome[i:i+nKmer_Length-1]
-        sNext_kmer = sGenome[i+1:i+nKmer_Length]
+        sPre_kmer = sFullGenome[i:i+nKmer_Length-1]
+        sNext_kmer = sFullGenome[i+1:i+nKmer_Length]
 
         sGraphDic.setdefault(sPre_kmer,[])
 
@@ -27,6 +29,7 @@ def Construct_sDeBruijnDic(nKmer_Length, sGenome):
     return dict(sorted(sGraphDic.items()))
 
 def get_Input(filename):
+
     with open(filename, "r") as f:
         inputs = f.read().split()
 
@@ -35,9 +38,9 @@ def get_Input(filename):
 
     return nKmer_Length, sGenome
 
-def write_Output(OutputFilename, sOverlapGraphDic):
+def write_Output(filename, sOverlapGraphDic):
     
-    with open(OutputFilename,"w") as f:
+    with open(filename,"w") as f:
         for k,v in sOverlapGraphDic.items():
             v = sorted()
             f.write(f"{k} -> {",".join(v)}\n")
